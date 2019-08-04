@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "lib": [
+      "es2015"
+    ],
+    "target": "es2015",
+    "strict": true,
+    "outDir": "./lib",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "inlineSourceMap": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "react",
+      "react-native",
+      "jest"
+    ],
+    "jsx": "react"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*-spec.ts"
+  ]
+}

@@ -1,0 +1,10 @@
+example/.expo/*
+coverage/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.nyc_output
+lib
+lib_test
+.DS_Store
