@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "es2015",
+    "esModuleInterop": true,
+    "diagnostics": true
+  }
+}

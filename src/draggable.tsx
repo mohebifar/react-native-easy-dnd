@@ -8,7 +8,13 @@ import {
 } from "react-native";
 import { Context } from "create-react-context";
 
-import { DraggableProps, DNDContext, DndId, Draggable } from "./types";
+import {
+  DraggableProps,
+  DraggableInnerProps,
+  DNDContext,
+  DndId,
+  Draggable
+} from "./types";
 
 type DraggableState = {
   pan: Animated.ValueXY;
@@ -17,7 +23,10 @@ type DraggableState = {
 export function draggable(
   Consumer: Context<DNDContext>["Consumer"]
 ): React.ForwardRefExoticComponent<DraggableProps> {
-  class BaseDraggable extends React.Component<DraggableProps, DraggableState> {
+  class BaseDraggable extends React.Component<
+    DraggableInnerProps,
+    DraggableState
+  > {
     private element?: View;
     private identifier: DndId;
     private moveEvent: (...args: any[]) => void;
@@ -27,10 +36,10 @@ export function draggable(
       bounceBack: true
     };
 
-    constructor(props: DraggableProps) {
+    constructor(props: DraggableInnerProps) {
       super(props);
 
-      this.identifier = Symbol("draggable");
+      this.identifier = props.customId || Symbol("draggable");
 
       this.state = {
         pan: new Animated.ValueXY()
@@ -91,7 +100,7 @@ export function draggable(
       this.props.__dndContext.unregisterDraggable(this.identifier);
     }
 
-    componentDidUpdate(prevProps: DraggableProps) {
+    componentDidUpdate(prevProps: DraggableInnerProps) {
       const updatedDraggable: Partial<Draggable> = {};
 
       if (prevProps.onDragEnd !== this.props.onDragEnd) {
@@ -112,9 +121,9 @@ export function draggable(
       }
     }
 
-    onLayout = (layout: LayoutChangeEvent) => {
+    onLayout = (...args: any[]) => {
       if (this.props.onLayout) {
-        this.props.onLayout(layout);
+        this.props.onLayout(...args);
       }
 
       this.measure();
@@ -164,6 +173,7 @@ export function draggable(
       </Consumer>
     )
   );
+  Draggable.displayName = "ConnectedDraggable";
 
   return Draggable;
 }

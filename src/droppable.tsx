@@ -2,14 +2,23 @@ import * as React from "react";
 import { View, LayoutChangeEvent } from "react-native";
 import { Context } from "create-react-context";
 
-import { DroppableProps, DNDContext, DndId, Droppable } from "./types";
+import {
+  DroppableProps,
+  DroppableInnerProps,
+  DNDContext,
+  DndId,
+  Droppable
+} from "./types";
 
 type DroppableState = {};
 
 export function droppable(
   Consumer: Context<DNDContext>["Consumer"]
 ): React.ForwardRefExoticComponent<DroppableProps> {
-  class BaseDroppable extends React.Component<DroppableProps, DroppableState> {
+  class BaseDroppable extends React.Component<
+    DroppableInnerProps,
+    DroppableState
+  > {
     private element?: View;
     private identifier: DndId;
 
@@ -17,17 +26,17 @@ export function droppable(
       bounceBack: true
     };
 
-    constructor(props: DroppableProps) {
+    constructor(props: DroppableInnerProps) {
       super(props);
 
-      this.identifier = Symbol("droppable");
+      this.identifier = this.props.customId || Symbol("droppable");
     }
 
     componentDidMount() {
       this.props.__dndContext.registerDroppable(this.identifier, {
         onDrop: this.props.onDrop,
         onEnter: this.props.onEnter,
-        onLeave: this.props.onLeave,
+        onLeave: this.props.onLeave
       });
     }
 
@@ -35,7 +44,7 @@ export function droppable(
       this.props.__dndContext.unregisterDroppable(this.identifier);
     }
 
-    componentDidUpdate(prevProps: DroppableProps) {
+    componentDidUpdate(prevProps: DroppableInnerProps) {
       const updatedDroppable: Partial<Droppable> = {};
 
       if (prevProps.onEnter !== this.props.onEnter) {
@@ -56,9 +65,9 @@ export function droppable(
       }
     }
 
-    onLayout = (layout: LayoutChangeEvent) => {
+    onLayout = (...args: any[]) => {
       if (this.props.onLayout) {
-        this.props.onLayout(layout);
+        this.props.onLayout(...args);
       }
 
       this.measure();
@@ -130,6 +139,7 @@ export function droppable(
       </Consumer>
     )
   );
+  Droppable.displayName = "ConnectedDroppable";
 
   return Droppable;
 }

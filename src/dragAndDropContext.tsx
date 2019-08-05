@@ -21,24 +21,26 @@ import {
 } from "./types";
 
 interface Props {
-  children: React.ReactNode;
+  children: ProviderProps<DNDContext>['children'];
 }
+
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 type DNDContextType = Context<DNDContext>;
 
-export type DragAndDropContext = {
+export interface DragAndDropContext {
   Consumer: DNDContextType["Consumer"];
-  Provider: DNDContextType["Provider"];
+  Provider: React.ComponentType<Props>;
   Draggable: React.ForwardRefExoticComponent<DraggableProps>;
   Droppable: React.ForwardRefExoticComponent<DroppableProps>;
-};
+}
 
 function createDndContext(): DragAndDropContext {
   const Context = createReactContext<DNDContext>({} as any);
   const { Provider, Consumer } = Context;
 
   class DragAndDropProvider
-    extends React.Component<ProviderProps<DNDContext>, State>
+    extends React.Component<Props, State>
     implements DNDRegistration {
     state: State = {
       draggables: [],

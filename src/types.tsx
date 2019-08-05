@@ -94,20 +94,28 @@ export interface DroppableRenderProps {
 }
 
 export interface DraggableProps {
-  onLayout: Function;
-  __dndContext: DNDContext;
+  onLayout?: Function;
   children: (props: DraggableRenderProps) => React.ReactNode;
-  bounceBack: boolean;
+  bounceBack?: boolean;
   onDragStart?: HandleDragStartFunction;
   onDragEnd?: HandleDragEndFunction;
   payload?: any;
+  customId?: DndId;
+}
+
+export interface DraggableInnerProps extends DraggableProps {
+  __dndContext: DNDContext;
 }
 
 export interface DroppableProps {
-  onLayout: Function;
-  __dndContext: DNDContext;
+  onLayout?: Function;
   children: (props: DroppableRenderProps) => React.ReactNode;
   onDrop?: HandleDropFunction;
   onEnter?: HandleEnterFunction;
   onLeave?: HandleLeaveFunction;
+  customId?: DndId;
+}
+
+export interface DroppableInnerProps extends DroppableProps {
+  __dndContext: DNDContext;
 }
