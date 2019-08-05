@@ -12,6 +12,7 @@
     "preserveConstEnums": true,
     "removeComments": true,
     "inlineSourceMap": true,
+    "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "./node_modules/@types"
     ],
@@ -27,6 +28,7 @@
   ],
   "exclude": [
     "node_modules",
-    "**/*-spec.ts"
+    "example",
+    "*.test.tsx"
   ]
 }
