@@ -1,4 +1,4 @@
-import { createDndContext } from "../dragAndDropContext";
+import { createDndContext } from "../src/dragAndDropContext";
 
 describe("createDnDContext", () => {
   it("Should return Provider, Consumer, Draggable, and Droppable", () => {

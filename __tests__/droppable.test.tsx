@@ -2,9 +2,9 @@ import * as React from "react";
 import renderer from "react-test-renderer";
 import { View, Animated } from "react-native";
 
-import { createDndContext, DragAndDropContext } from "../dragAndDropContext";
-import { droppable } from "../droppable";
-import { DraggableRenderProps } from "../types";
+import { createDndContext, DragAndDropContext } from "../src/dragAndDropContext";
+import { droppable } from "../src/droppable";
+import { DraggableRenderProps } from "../src/types";
 
 describe("droppable", () => {
   let Context: DragAndDropContext;

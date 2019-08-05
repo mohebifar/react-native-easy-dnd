@@ -2,8 +2,8 @@ import * as React from "react";
 import renderer from "react-test-renderer";
 import { View, Animated } from "react-native";
 
-import { createDndContext, DragAndDropContext } from "../dragAndDropContext";
-import { draggable } from "../draggable";
+import { createDndContext, DragAndDropContext } from "../src/dragAndDropContext";
+import { draggable } from "../src/draggable";
 
 describe("draggable", () => {
   let Context: DragAndDropContext;

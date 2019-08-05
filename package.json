@@ -75,7 +75,8 @@
     ],
     "testPathIgnorePatterns": [
       "node_modules",
-      "example/"
+      "example/",
+      "lib/"
     ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
