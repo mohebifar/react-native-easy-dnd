@@ -74,7 +74,7 @@ export function droppable(
     };
 
     handleRef = (element: any) => {
-      if (element.getNode) {
+      if (element && element.getNode) {
         this.element = element.getNode();
       } else {
         this.element = element;
