@@ -106,7 +106,7 @@ function createDndContext(): DragAndDropContext {
 
     unregisterDroppable = (id: DndId) => {
       this.setState(({ droppables }) => ({
-        droppables: droppable.filter(droppable => droppable.id !== id)
+        droppables: droppables.filter(droppable => droppable.id !== id)
       }));
     };
 
