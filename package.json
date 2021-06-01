@@ -35,7 +35,7 @@
     "create-react-context": "^0.2.3"
   },
   "peerDependencies": {
-    "react-native": ">=50.0.0"
+    "react-native": ">=0.50.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.16",
