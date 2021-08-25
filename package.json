@@ -3,11 +3,14 @@
   "version": "1.0.3",
   "description": "react-native-easy-dnd",
   "license": "MIT",
-  "repository": "",
   "author": {
     "name": "Mohamad Mohebifar",
     "email": "mohamad@mohebifar.com",
     "url": "https://github.com/mohebifar"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohebifar/react-native-easy-dnd.git"
   },
   "keywords": [
     "react-native",
